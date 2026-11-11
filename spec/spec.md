@@ -7,16 +7,16 @@
 - Structure and depth are modelled on the Hem flyttstädning page, but all copy is original and written under the Let's Clean Göteborg brand. Do not copy competitor text, reviews, certifications/collective-agreement claims, office addresses or city lists.
 - Never invent prices, company numbers or addresses. Where no price is known, say "Fast pris i offert" / "Begär offert".
 - Prices are shown in plain, always-visible tables (no click needed).
-- RUT-avdrag: 50% of labour cost, max 50 000 kr per person and year. RUT applies to private individuals only, not to companies.
+- RUT-avdrag: 50% of eligible labour cost; ROT and RUT share a limit of 75 000 kr per person and year, of which ROT is limited to 50 000 kr. Eligibility also depends on tax and other deductions. RUT applies to private individuals only, not to companies.
 
 **Services (6):** Flyttstädning, Hemstädning, Storstädning, Företagsstädning/Kontorsstädning, Flytthjälp, Dödsbo. Each has its own page (no combined "other services" page with duplicated content).
 
 ---
 
 ### **DESIGN & BRANDING**
-- **Primary accent:** Orange `#FF6B00` (CTAs, active states, price callouts). Hover `#E85F00`.
-- **Secondary:** Slate Navy `#0F172A` (text/headers), `#F8FAFC` (soft backgrounds), Emerald `#10B981` (guarantee/RUT badges).
-- **Vibe:** Professional, trustworthy, transparent pricing, local Gothenburg presence.
+- **Palette:** Warm off-white and muted sage, dark forest-green text and buttons, with a restrained warm orange accent for small details.
+- **Logo:** An arched forest-green `LSG` monogram with a warm orange sparkle and a matching wordmark, shared across the header and footer.
+- **Vibe:** Warm Scandinavian design with generous whitespace, understated serif headings, natural Swedish copy, transparent pricing, an original home illustration and tasteful animations.
 - **Tech stack:** Next.js 15 (App Router, TypeScript), Tailwind CSS 4, Lucide React, Framer Motion (scroll reveal on home page service cards).
 
 ---
@@ -52,12 +52,12 @@
 ### **PAGES**
 
 **Startsida:** Hero ("Göteborgs tryggaste städfirma för hem & företag", subtitle with fast pris / 15 dagars garanti / 50% RUT), quick estimator, six service cards linking to their pages, trust badges, 3-step process, closing CTA.
-- Estimator gives a price only for Flyttstädning (from the real price table, plus add-ons); other services show "Begär offert". Sizes with no fixed price (115–180 m²) also show "Begär offert".
+- The interactive flyttstädning estimator accepts a positive whole-number area in m² or a selection from the price ranges. It displays the corresponding price after RUT immediately. For areas of 200 m² and above, the customer must enter the exact area and the price is 20 kr/m². Include optional add-ons.
 
 **Flyttstädning:** modelled on Hem's page. Fixed prices, fönsterputs included, 15 dagars garanti, Mäklarsamfundets riktlinjer.
-- Price table (after 50% RUT): 0–29 m² 1 699 kr · 30–39 1 759 · 40–49 1 809 · 50–59 1 979 · 60–69 2 199 · 70–79 2 419 · 80–89 2 639 · 90–99 2 959 · 100–114 3 427 · 115–180 m² fast pris i offert · >180 m² 30 kr/m².
+- Price table (after 50% RUT): 0–29 m² 1 499 kr · 30–59 m² 1 670 kr · 60–89 m² 2 314 kr · 90–119 m² 2 856 kr · 120–149 m² 3 278 kr · 150–199 m² 4 179 kr · 200 m² and above 20 kr/m².
 - Add-on table: Vanlig balkong +250 · Inglasad balkong +450 · Ugnsplåtar +390 · Kamin/öppen spis +200 · Avfrostning frys +245 · Käll-/vindsförråd +250 · Vattenlås +200.
-- Interactive calculator (area + add-on checkboxes) below the tables.
+- Interactive calculator (area input or range selector + add-on checkboxes) below the tables, using the same prices and calculation as the homepage estimator.
 - Full checklist: Generella moment, Kök, Badrum & WC; "Att tänka på som kund" (el/vatten, avfrostad frys, framflyttade vitvaror, demonterade fronter, inga sopor/tejp/krokar, vattenlås på begäran).
 
 **Hemstädning:** Rhythm table (varje vecka / varannan vecka / var fjärde vecka), no bindningstid, samma städare, ansvarsförsäkring, miljövänliga medel. Form includes area and frequency.
@@ -68,7 +68,7 @@
 
 **Övriga tjänster:** overview with three cards only.
 
-**Priser & RUT-avdrag:** RUT explanation (50%, max 50 000 kr/person/år, Let's Clean handles Skatteverket administration), flyttstädning price table, links to the other services (priced via offert), RUT FAQ.
+**Priser & RUT-avdrag:** RUT explanation (50% of eligible labour cost; combined ROT and RUT limit of 75 000 kr/person/year, with a 50 000 kr ROT sublimit; Let's Clean handles Skatteverket administration), flyttstädning price table, links to the other services (priced via offert), RUT FAQ.
 
 **FAQ & Kontakt:** searchable FAQ accordion (general + RUT), phone/e-post, quote form.
 
@@ -77,9 +77,11 @@
 ---
 
 ### **FORMS**
-- Quote forms currently open the visitor's email app with a prefilled `mailto:` to info@letscleangoteborg.se. Server-side delivery (Resend/Nodemailer via a route handler) is NOT yet implemented and requires credentials.
+- Quote forms post to a server-side route that validates inputs and sends via Resend with a configured recipient, verified sender and server-only API key. Show a clear error with alternative contact details when sending is unavailable; never report success unless the provider accepts the request.
+- Collect the contact and service details needed for an offer. Do not collect personal identity numbers in the form or email; explain that the company will contact the customer separately after the quote if a personal identity number is needed for RUT.
+- A possible future credit-information integration is not implemented. A credit check is not proof of RUT eligibility: any future eligibility check needs an appropriate provider, a verified legal basis and privacy review, and a separate way to confirm eligibility and remaining RUT allowance. Do not claim that eligibility has been checked.
 
 ### **OPEN ITEMS**
-- Real prices for Hemstädning, Storstädning, Flytthjälp, Dödsbo and Företagsstädning, and the 115–180 m² flyttstädning range.
+- Real prices for Hemstädning, Storstädning, Flytthjälp, Dödsbo and Företagsstädning.
 - Org.nr, office address, real photos/logo, customer reviews and any certifications.
-- Server-side email sending, cookie consent, and legal text review.
+- Configure and verify Resend credentials and sending domain; add deployment-level rate limiting and bot protection; review email-provider privacy and legal requirements. Any credit-information/RUT eligibility integration, cookie consent, and legal text review remain open.
