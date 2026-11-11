@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight, Sparkles } from "lucide-react";
 import { PriceCalculator, TrustStrip } from "@/components/interactive";
 import { Reveal } from "@/components/reveal";
 import { services } from "@/lib/services";
@@ -30,12 +30,12 @@ export default function Home() {
       <div className="container hero-grid">
         <div className="hero-copy">
           <span className="eyebrow"><span className="eyebrow-dot" /> STÄDHJÄLP I GÖTEBORG MED OMNEJD</span>
-          <h1>Lite mer tid.<br /><em>Lite mindre städning.</em></h1>
-          <p className="hero-description">Ett rent hem, en smidigare flytt eller en trivsam arbetsplats. Vi hjälper dig med det praktiska, så att du får tid till annat.</p>
+          <h1>Ett renare hem.<br /><em>Mer tid för livet.</em></h1>
+          <p className="hero-description">Vi tar hand om städningen så att du kan lägga tiden på det som betyder mest.</p>
           <div className="hero-actions"><Link className="button button-orange" href="/faq-kontakt#offert">Be om en offert <ArrowRight size={17} /></Link><a className="text-link" href="#tjanster">Se våra tjänster <ArrowDown size={16} /></a></div>
-          <div className="hero-bottom">FÖR HEM, FLYTT &amp; FÖRETAG</div>
+          <div className="hero-bottom"><Sparkles size={16} aria-hidden="true" /> FÖR HEM, FLYTT &amp; FÖRETAG</div>
         </div>
-        <div className="hero-visual"><HomeIllustration /><div className="hero-caption">Ett enklare vardagsliv <span>— Göteborg</span></div></div>
+        <div className="hero-visual"><HomeIllustration /><div className="hero-caption"><span className="hero-caption-icon"><Sparkles size={18} aria-hidden="true" /></span><span><strong>Mer tid för dig.</strong><small>Städhjälp i Göteborg</small></span></div></div>
       </div>
     </section>
     <TrustStrip />
