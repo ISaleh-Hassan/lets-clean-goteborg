@@ -1,22 +1,19 @@
 export const movePriceRows: { from: number; to: number; price: number }[] = [
-  { from: 0, to: 29, price: 1699 },
-  { from: 30, to: 39, price: 1759 },
-  { from: 40, to: 49, price: 1809 },
-  { from: 50, to: 59, price: 1979 },
-  { from: 60, to: 69, price: 2199 },
-  { from: 70, to: 79, price: 2419 },
-  { from: 80, to: 89, price: 2639 },
-  { from: 90, to: 99, price: 2959 },
-  { from: 100, to: 114, price: 3427 },
+  { from: 0, to: 29, price: 1499 },
+  { from: 30, to: 59, price: 1670 },
+  { from: 60, to: 89, price: 2314 },
+  { from: 90, to: 119, price: 2856 },
+  { from: 120, to: 149, price: 3278 },
+  { from: 150, to: 199, price: 4179 },
 ];
 
-export const PER_SQM_OVER_180 = 30;
+export const PER_SQM_FROM_200 = 20;
 
 // null = no fixed price, a quote is needed
 export function movePrice(area: number): number | null {
   const row = movePriceRows.find((r) => area >= r.from && area <= r.to);
   if (row) return row.price;
-  if (area > 180) return Math.round(area * PER_SQM_OVER_180);
+  if (area >= 200) return Math.round(area * PER_SQM_FROM_200);
   return null;
 }
 

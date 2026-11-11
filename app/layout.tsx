@@ -4,8 +4,8 @@ import { Footer, Header } from "@/components/site";
 import { MotionProvider } from "@/components/reveal";
 
 export const metadata: Metadata = {
-  title: "Let's Clean Göteborg | Städning med omtanke",
-  description: "Trygg städning och flytthjälp i Göteborg. Fast pris, 15 dagars garanti och RUT-avdrag direkt på fakturan.",
+  title: "LSG | Städning och flytthjälp i Göteborg",
+  description: "Få hjälp med flyttstädning, hemstädning och flytthjälp i Göteborg. Räkna på flyttstädning direkt och be om en tydlig offert.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
