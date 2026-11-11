@@ -5,7 +5,7 @@ import { Reveal } from "@/components/reveal";
 import { services } from "@/lib/services";
 
 function HomeIllustration() {
-  return <svg className="home-illustration" viewBox="0 0 640 610" role="img" aria-label="Illustration av ett ljust och lugnt hem">
+  return <svg className="home-illustration" viewBox="0 0 640 610" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration av ett ljust och lugnt hem">
     <rect width="640" height="610" fill="#e4e6dc" />
     <rect y="485" width="640" height="125" fill="#d2c8b7" />
     <rect x="93" y="58" width="281" height="305" rx="140" fill="#f3f1e8" />
@@ -44,7 +44,7 @@ export default function Home() {
       <div className="services-grid">{services.map((service, index) => <Reveal key={service.slug} delay={index * 0.05}><Link className="service-card" href={`/${service.slug}`}><span className="service-number">0{index + 1}</span><div><h3>{service.name}</h3><p>{service.short}</p></div><span className="service-arrow" aria-hidden="true"><ArrowRight size={19} /></span></Link></Reveal>)}</div>
     </div></section>
     <section className="section calculator-home"><div className="container split-heading"><div><span className="eyebrow">02 / FLYTTSTÄDNING</span><h2>En sak mindre<br /><em>att tänka på.</em></h2><p>Ange bostadens storlek och se vad din flyttstädning kostar efter RUT. Fönsterputs ingår.</p><Link className="text-link" href="/flyttstadning">Läs om flyttstädning <ArrowRight size={17} /></Link></div><PriceCalculator compact /></div></section>
-    <section className="section process-section"><div className="container"><div className="section-heading heading-row"><div><span className="eyebrow">03 / SÅ FUNGERAR DET</span><h2>Enkelt hela vägen.</h2></div><p>Från första kontakt till ett rent och välkomnande hem.</p></div><div className="steps-grid"><div className="step-card"><span>01</span><h3>Berätta vad du behöver</h3><p>Välj tjänst och skicka en kostnadsfri förfrågan.</p></div><div className="step-card"><span>02</span><h3>Få en tydlig offert</h3><p>Vi tar fram ett upplägg som passar dina önskemål.</p></div><div className="step-card"><span>03</span><h3>Vi tar hand om resten</h3><p>Vi kommer överens om detaljerna och tar hand om jobbet.</p></div></div></div></section>
+    <section className="section process-section"><div className="container"><div className="section-heading heading-row"><div><span className="eyebrow">03 / SÅ FUNGERAR DET</span><h2>Enkelt hela vägen.</h2></div><p>Från första kontakt till ett rent och välkomnande hem.</p></div><div className="steps-grid"><Reveal><div className="step-card"><span>01</span><h3>Berätta vad du behöver</h3><p>Välj tjänst och skicka en kostnadsfri förfrågan.</p></div></Reveal><Reveal delay={0.08}><div className="step-card"><span>02</span><h3>Få en tydlig offert</h3><p>Vi tar fram ett upplägg som passar dina önskemål.</p></div></Reveal><Reveal delay={0.16}><div className="step-card"><span>03</span><h3>Vi tar hand om resten</h3><p>Vi kommer överens om detaljerna och tar hand om jobbet.</p></div></Reveal></div></div></section>
     <section className="cta-section"><div className="container cta-inner"><div><span className="eyebrow">VI FINNS HÄR FÖR DIG</span><h2>Vad kan vi hjälpa dig med?</h2><p>Hör av dig så hittar vi ett upplägg som passar.</p></div><Link className="button button-white" href="/faq-kontakt#offert">Begär en kostnadsfri offert <ArrowRight size={18} /></Link></div></section>
   </>;
 }

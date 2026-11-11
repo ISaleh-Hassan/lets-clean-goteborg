@@ -16,7 +16,7 @@
 ### **DESIGN & BRANDING**
 - **Palette:** Warm off-white and muted sage, dark forest-green text and buttons, with a restrained warm orange accent for small details.
 - **Logo:** An arched forest-green `LSG` monogram with a warm orange sparkle and a matching wordmark, shared across the header and footer.
-- **Vibe:** Warm Scandinavian design with generous whitespace, understated serif headings, natural Swedish copy, transparent pricing, an original home illustration and tasteful animations.
+- **Vibe:** Warm Scandinavian design with generous whitespace, understated serif headings, natural Swedish copy, transparent pricing, an original home illustration and tasteful entrance and scroll animations. Keep the homepage compact and usable on mobile, and respect reduced-motion preferences.
 - **Tech stack:** Next.js 15 (App Router, TypeScript), Tailwind CSS 4, Lucide React, Framer Motion (scroll reveal on home page service cards).
 
 ---
